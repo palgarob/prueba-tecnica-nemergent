@@ -1,15 +1,19 @@
 #ifndef NODE_H
 #define NODE_H
 
-typedef struct s_node node;
+#include <stdlib.h>
+#include <stdio.h> // perror()
+
+typedef struct s_node t_node;
 struct s_node
 {
 	int		num;
-	node	*next;
+	t_node	*next;
 };
 
-node *new_list(int num);
-node *add(node **first_node, int num);
-void clear(node *first_node);
+t_node *new_node(int num);
+void add_node(t_node **first_node, t_node *node_new);
+void clear(t_node **first_node);
+void print_list(t_node *node);
 
 #endif
