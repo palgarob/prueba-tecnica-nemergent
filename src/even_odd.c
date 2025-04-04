@@ -12,4 +12,5 @@ void even_odd(struct s_config *config)
 		add_node(&list, new_node(rand()));
 	}
 	print_list(list);
+	clear(&list);
 }
