@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <stdlib.h> // strtol()
+#include <time.h> // time()
 #include "node.h"
 
 #define INVALID_ARGS "Error: invalid arguments, run ./even_odd -h\n"
