@@ -4,13 +4,13 @@ static void extract_values(struct s_config *config, char *numbers_per_thread, ch
 {
 	char *endptr;
 
-	config->numbers_per_thread = strtol(numbers_per_thread + 21, &endptr, 10);
-	if (endptr == numbers_per_thread + 21 || config->numbers_per_thread > 200 || config->numbers_per_thread < 1) {
+	config->numbers_per_thread = strtol(numbers_per_thread + 20, &endptr, 10);
+	if (endptr == numbers_per_thread + 20 || config->numbers_per_thread > 200 || config->numbers_per_thread < 1) {
 		fprintf(stderr, PARAM_ERR);
 		exit(1);
 	}
-	config->thread_num = strtol(thread_num + 13, &endptr, 10);
-	if (endptr == thread_num + 13|| config->thread_num > 200 || config->thread_num < 1) {
+	config->thread_num = strtol(thread_num + 12, &endptr, 10);
+	if (endptr == thread_num + 12 || config->thread_num > 200 || config->thread_num < 1) {
 		fprintf(stderr, PARAM_ERR);
 		exit(1);
 	}
@@ -25,16 +25,16 @@ void parse_file(struct s_config *config, FILE *fp)
 	if (!fgets(line2, 100, fp)) {perror("fgets: "); exit(1);}
 
 	if (
-		!strncmp(line1, "numbers_per_thread = ", 21)
-		&& !strncmp(line2, "thread_num = ", 13)
+		!strncmp(line1, "numbers_per_thread =", 20)
+		&& !strncmp(line2, "thread_num =", 12)
 	)
 	{
 		extract_values(config, line1, line2);
 		free(line1); free(line2);
 	}
 	else if (
-		!strncmp(line2, "numbers_per_thread = ", 21)
-		&& !strncmp(line1, "thread_num = ", 13)
+		!strncmp(line2, "numbers_per_thread =", 20)
+		&& !strncmp(line1, "thread_num =", 12)
 	)
 	{
 		extract_values(config, line2, line1);
