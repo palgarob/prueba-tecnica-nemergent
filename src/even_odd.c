@@ -3,5 +3,5 @@
 void even_odd(struct s_config *config)
 {
 	(void)config;
-	printf("Hello world!");
+	printf("Hello world!\n");
 }

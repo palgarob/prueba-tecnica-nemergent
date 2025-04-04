@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	else if (argc == 3 && (!strcmp("-f", argv[1]) || !strcmp("--file", argv[1])))
 	{
 		check_extension(argv[2]);
-		fp = fopen(argv[2], O_RDONLY);
+		fp = fopen(argv[2], "r");
 		if (fp == NULL)
 			return (perror("fopen: "), 1);
 		parse_file(&config, fp);

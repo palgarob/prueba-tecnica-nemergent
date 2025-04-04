@@ -18,8 +18,8 @@ static void extract_values(struct s_config *config, char *numbers_per_thread, ch
 
 void parse_file(struct s_config *config, FILE *fp)
 {
-	char *line1 = NULL;
-	char *line2 = NULL;
+	char *line1 = (char *)calloc(sizeof(char), 100);
+	char *line2 = (char *)calloc(sizeof(char), 100);
 
 	if (!fgets(line1, 100, fp)) {perror("fgets: "); exit(1);}
 	if (!fgets(line2, 100, fp)) {perror("fgets: "); exit(1);}
@@ -28,15 +28,22 @@ void parse_file(struct s_config *config, FILE *fp)
 		!strncmp(line1, "numbers_per_thread = ", 21)
 		&& !strncmp(line2, "thread_num = ", 13)
 	)
+	{
 		extract_values(config, line1, line2);
+		free(line1); free(line2);
+	}
 	else if (
 		!strncmp(line2, "numbers_per_thread = ", 21)
 		&& !strncmp(line1, "thread_num = ", 13)
 	)
+	{
 		extract_values(config, line2, line1);
+		free(line1); free(line2);
+	}
 	else
 	{
 		fprintf(stderr, KEY_FORMAT);
+		free(line1); free(line2);
 		exit(1);
 	}
 }
