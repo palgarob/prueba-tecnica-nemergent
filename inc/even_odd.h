@@ -37,10 +37,11 @@ typedef struct s_thread_struct
 
 struct s_data 
 {
-	pthread_mutex_t odd_mutex;
-	pthread_mutex_t even_mutex;
+	t_node *initial_list;
 	t_node *even_list;
 	t_node *odd_list;
+	pthread_mutex_t odd_mutex;
+	pthread_mutex_t even_mutex;
 };
 
 void even_odd(struct s_config *config);

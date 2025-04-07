@@ -4,21 +4,17 @@ t_node *new_node(int num)
 {
 	t_node *node_new = (t_node *)malloc(sizeof(t_node));
 	if (!node_new)
-		return (perror("node.c : malloc : "), NULL);
-	node_new->num = num;
+	{
+		return (perror("malloc : "), NULL);
+	}
+		node_new->num = num;
 	return node_new;
 }
 
-t_node *add_node(t_node **list, int num)
+void add_node(t_node **list, t_node *node_new)
 {
-	t_node *node_new = new_node(num);
-	if (node_new)
-	{
-		node_new->next = *list;
-		*list = node_new;
-		return (node_new);
-	}
-	return (NULL);
+	node_new->next = *list;
+	*list = node_new;
 }
 
 void clear(t_node **first_node)
