@@ -3,14 +3,23 @@
 
 void even_odd(struct s_config *config)
 {
-	t_node *list = NULL;
+	t_node *initial_list = NULL;
+	/* t_node *even_list = NULL;
+	t_node *odd_list = NULL; */
 
 	printf("numbers_per_thread = %li\n", config->numbers_per_thread);
-	printf("thread_num = %li\n", config->thread_num);
 	srand(time(NULL));
-	for (int i = 0; i < config->numbers_per_thread * config->thread_num; i++) {
-		add_node(&list, new_node(rand()));
+	printf("thread_num = %li\n", config->thread_num);
+	int initial_list_size = config->numbers_per_thread * config->thread_num;
+	int *pool = generate_numbers_pool(POOL_SIZE);
+	for (int i = 0; i < initial_list_size; i++) {
+		add_node(&initial_list, new_node(pool[i]));
 	}
-	print_list(list);
-	clear(&list);
+	/* pthread_t t[initial_list_size];
+	for (int i = 0; i < initial_list_size; i++)
+	{
+		pthread_create(&t[i], NULL, routine, NULL);
+	} */
+	print_list(initial_list);
+//	clear(&list);
 }

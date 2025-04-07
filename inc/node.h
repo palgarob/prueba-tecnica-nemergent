@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h> // perror()
+#include <stdbool.h> // has_duplicates()
 
 typedef struct s_node t_node;
 struct s_node

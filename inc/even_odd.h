@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <stdlib.h> // strtol()
 #include <time.h> // time()
+#include <pthread.h>
 #include "node.h"
 
 #define INVALID_ARGS "Error: invalid arguments, run ./even_odd -h\n"
@@ -18,6 +19,7 @@
 #define HELP_GUIDE "\
 ./even_odd [-h || --help]		help\n\
 ./even_odd [-f || --file] <pathname>	for program exec\n"
+#define POOL_SIZE 50000
 
 struct s_config {
 	long	numbers_per_thread;
@@ -26,5 +28,7 @@ struct s_config {
 
 void even_odd(struct s_config *config);
 void parse_file(struct s_config *config, FILE *fp);
+int *generate_numbers_pool(int size);
+bool has_duplicates(int arr[], int size);
 
 #endif
