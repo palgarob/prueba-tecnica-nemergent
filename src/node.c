@@ -17,7 +17,7 @@ void add_node(t_node **list, t_node *node_new)
 	*list = node_new;
 }
 
-void clear(t_node **first_node)
+void clear_list(t_node **first_node)
 {
 	t_node	*aux;
 	t_node	*prev;
@@ -40,8 +40,10 @@ void clear(t_node **first_node)
 void print_list(t_node *node)
 {
 	if (node == NULL) return ;
+	int i = 1;
 	while (node) {
-		printf("%d ", node->num);
+		printf("%d: %d\n", i, node->num);
+		i++;
 		node = node->next;
 	}
 	printf("\n");

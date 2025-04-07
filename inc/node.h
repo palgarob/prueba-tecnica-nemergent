@@ -14,7 +14,7 @@ struct s_node
 
 t_node *new_node(int num);
 void add_node(t_node **first_node, t_node *node_new);
-void clear(t_node **first_node);
+void clear_list(t_node **first_node);
 void print_list(t_node *node);
 
 #endif

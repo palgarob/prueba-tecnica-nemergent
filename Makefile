@@ -13,7 +13,7 @@ even_odd : $(OBJ_FILES)
 	gcc $^ -o even_odd
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | $(OBJ_DIR)
-	gcc -Wall -Wextra -Werror -g -O0 -I$(INC_DIR) -c $< -o $@
+	gcc -Wall -Wextra -Werror -pthread -g -O0 -I$(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR) :
 	mkdir -p $@
