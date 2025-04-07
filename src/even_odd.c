@@ -1,7 +1,7 @@
 #include "even_odd.h"
 #include "node.h"
 
-void *routine(void * param)
+static void *routine(void * param)
 {
 	t_thread *t;
 	t = (t_thread *)param;
@@ -104,6 +104,7 @@ void even_odd(struct s_config *config)
 		};
 	}
 
+	// join threads
 	for (int i = 0; i < config->thread_num; i++)
 	{
 		if (pthread_join(threads[i].thread, NULL))
@@ -115,11 +116,14 @@ void even_odd(struct s_config *config)
 		clear_list(&threads[i].list);
 	}
 
+	// print results
 	printf("Initial list:\n");
 	print_list(data.initial_list);
 	printf("Odd list:\n");
 	print_list(data.odd_list);
 	printf("Even list:\n");
 	print_list(data.even_list);
+
+	// clean
 	clear_all(&data);
 }

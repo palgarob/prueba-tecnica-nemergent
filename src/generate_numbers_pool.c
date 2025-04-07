@@ -15,11 +15,5 @@ int *generate_numbers_pool(int n)
 		pool[i] = pool[j];
 		pool[j] = temp;
 	}
-	/* int i = 0;
-	while (i < n)
-	{
-		printf("%d  ", pool[i]);
-		i++;
-	} */
 	return pool;
 }
