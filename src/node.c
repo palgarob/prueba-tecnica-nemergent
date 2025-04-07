@@ -9,13 +9,16 @@ t_node *new_node(int num)
 	return node_new;
 }
 
-void add_node(t_node **list, t_node *node_new)
+t_node *add_node(t_node **list, int num)
 {
-	if (*list == NULL) {
-		*list = node_new; return ;
+	t_node *node_new = new_node(num);
+	if (node_new)
+	{
+		node_new->next = *list;
+		*list = node_new;
+		return (node_new);
 	}
-	node_new->next = *list;
-	*list = node_new;
+	return (NULL);
 }
 
 void clear(t_node **first_node)

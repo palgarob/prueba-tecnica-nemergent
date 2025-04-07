@@ -1,5 +1,5 @@
-#ifndef EVEN_ODD
-#define EVEN_ODD
+#ifndef EVEN_ODD_H
+#define EVEN_ODD_H
 
 #include <string.h> //strcmp()
 #include <stdio.h>
@@ -24,6 +24,23 @@
 struct s_config {
 	long	numbers_per_thread;
 	long	thread_num;
+};
+
+struct s_data;
+typedef struct s_thread_struct
+{
+	int id;
+	t_node *list;
+	pthread_t thread;
+	struct s_data *content;
+}t_thread;
+
+struct s_data 
+{
+	pthread_mutex_t odd_mutex;
+	pthread_mutex_t even_mutex;
+	t_node *even_list;
+	t_node *odd_list;
 };
 
 void even_odd(struct s_config *config);
